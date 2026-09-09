@@ -13,8 +13,6 @@ async def root():
 
 Base.metadata.create_all(bind=engine)  # creates tables if they don't exist
 
-app = FastAPI()
-
 @app.get("/users")
 def read_users(db: Session = Depends(get_db)):
     return db.query(models.User).all()
